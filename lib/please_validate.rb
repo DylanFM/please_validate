@@ -1,6 +1,9 @@
 class PleaseValidate
-  def initialize(file)
-    @file = file
+  
+  class << self
+    def file(file)
+      @file = file
+    end
   end
   
 end
