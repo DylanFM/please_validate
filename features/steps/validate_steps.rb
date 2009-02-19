@@ -1,6 +1,3 @@
-require 'spec'
-$:.unshift(File.dirname(__FILE__) + '/../../lib')
-
 Given /^there is a valid XHTML file$/ do
   @file = 'examples/valid.html'
   File.exist? @file
