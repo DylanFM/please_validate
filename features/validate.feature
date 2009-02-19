@@ -9,3 +9,9 @@ Feature: Validate markup
     Then the response should not show errors
     And the file should be valid
   
+  Scenario: Validate invalid markup
+    Given there is an invalid XHTML file
+    When the file is validated
+    Then the file should be invalid
+    And the response should show errors
+  
