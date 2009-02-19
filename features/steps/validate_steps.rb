@@ -1,6 +1,6 @@
 Given /^there is a valid XHTML file$/ do
   @file = 'examples/valid.html'
-  File.exist? @file
+  File.exist?(@file).should be_true
 end
 
 When /^the file is validated$/ do
@@ -18,7 +18,7 @@ end
 
 Given /^there is an invalid XHTML file$/ do
   @file = 'examples/invalid.html'
-  File.exist? @file
+  File.exist?(@file).should be_true
 end
 
 Then /^the file should be invalid$/ do
