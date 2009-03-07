@@ -4,7 +4,7 @@ Given /^there is a valid XHTML file$/ do
 end
 
 When /^the file is validated$/ do
-  @result = PleaseValidate.file(@file)
+  @result = PleaseValidate::Validator.file(@file)
 end
 
 Then /^the response should not show errors$/ do
