@@ -5,7 +5,11 @@ module PleaseValidate
     class << self
       def file(file_path)
         response = File.open(file_path, 'r') do |f|
-          Net::HTTP.start('validator.w3.org').post('/check',"fragment=#{CGI.escape(f.read)}&output=xml")
+          Net::HTTP.start('validator.w3.org').post(
+            '/check',
+            "fragment=#{CGI.escape(f.read)}&output=xml",
+            {'Content-Type' => 'application/x-www-form-urlencoded'}
+          )
         end
         parse_response response
       end
