@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby -wKU
+
+$: << File.dirname(__FILE__) + '/../lib'
+
+require 'please_validate'
+
+PleaseValidate::Cli.execute(ARGV.dup)
