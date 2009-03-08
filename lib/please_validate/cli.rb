@@ -17,10 +17,12 @@ module PleaseValidate
     end
     
     def display
-      puts "Validated #{@file}:"
-      puts "The file is #{@result[:status]}"
+      puts "#{@result[:status].to_s.capitalize}: #{@file}"
       if @result[:status] == :invalid
-        puts "There are #{@result[:errors].length} error#{@result[:errors].length == 1 ? nil:'s'}"
+        puts "#{@result[:error_count]} error#{@result[:error_count] == 1 ? nil:'s'}:"
+        @result[:errors].each do |error|
+          puts "Line #{error[:line]}, Column #{error[:col]}: #{error[:message]}"
+        end
       end
     end
   end
