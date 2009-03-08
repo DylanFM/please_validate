@@ -1,3 +1,5 @@
+require 'colored'
+
 module PleaseValidate
   class Cli
     class << self
@@ -17,11 +19,11 @@ module PleaseValidate
     end
     
     def display
-      puts "#{@result[:status].to_s.capitalize}: #{@file}"
+      puts "#{@result[:status].to_s.capitalize}: #{@file}".send(@result[:status] == :valid ? :on_green : :on_red)
       if @result[:status] == :invalid
         puts "#{@result[:error_count]} error#{@result[:error_count] == 1 ? nil:'s'}:"
         @result[:errors].each do |error|
-          puts "Line #{error[:line]}, Column #{error[:col]}: #{error[:message]}"
+          puts "Line #{error[:line]}, Column #{error[:col]}".red + ": #{error[:message]}"
         end
       end
     end
