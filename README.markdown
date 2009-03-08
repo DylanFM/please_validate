@@ -2,6 +2,9 @@
 
 A little command-line markup validator.
 
+Requires colored and nokogiri gems.
+    gem install colored nokogiri
+
 ##Example
 
 ###Valid file
