@@ -3,11 +3,13 @@ require 'colored'
 module PleaseValidate
   class CLI
     class << self
+      # Execute the CLI
       def execute(stdout, arguments=[])
         new(arguments)
       end
     end
     
+    # Takes the requested file, passes it to validate for validation and displays the result with the display method
     def initialize(arguments)
       begin
         @file = arguments[0]
@@ -18,10 +20,12 @@ module PleaseValidate
       end
     end
     
+    # Calls the validator class's file method for the requested file
     def validate
       PleaseValidate::Validator.file(@file)
     end
     
+    # Displays the file validation's results
     def display
       puts "#{@result[:status].to_s.capitalize}: #{@file}".send(@result[:status] == :valid ? :on_green : :on_red)
       if @result[:status] == :invalid

@@ -3,6 +3,7 @@ module PleaseValidate
   class Validator
 
     class << self
+      # Read requested file's contents and send to the w3c validator api then call the parse_response method to sort the response out.
       def file(file_path)
         begin
           raise "Please specify a file to validate" unless file_path
@@ -22,6 +23,7 @@ module PleaseValidate
         
       end
 
+      # Takes an XML response from the file method's call to the w3c and parses it into a nice little hash
       def parse_response(response)
         # Use Nokogiri to parse the xml
         response_data = Nokogiri::XML.parse(response.body)
