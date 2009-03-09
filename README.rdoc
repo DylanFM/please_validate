@@ -14,12 +14,12 @@ A little markup validator.
 
 === Valid file
   
-    $ bin/pleasevalidate examples/valid.html
+    $ pleasevalidate examples/valid.html
     Valid: examples/valid.html
 
 === Invalid file
 
-    $ bin/pleasevalidate examples/invalid.html
+    $ pleasevalidate examples/invalid.html
     Invalid: examples/invalid.html
     11 errors:
     Line 8, Column 19: end tag for element "itle" which is not open
@@ -46,7 +46,7 @@ A little markup validator.
 
 == INSTALL:
 
-* FIX (sudo gem install, anything else)
+    rake install_gem
 
 == LICENSE:
 
