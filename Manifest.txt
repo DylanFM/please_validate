@@ -5,10 +5,11 @@ README.rdoc
 RakeFile
 bin/pleasevalidate
 cucumber.yml
+features/cli_validation.feature
+features/steps/cli_validation_steps.rb
 features/steps/helper.rb
 features/steps/validate_steps.rb
 features/validate.feature
-features/validate_file.feature
 lib/please_validate.rb
 lib/please_validate/cli.rb
 lib/please_validate/validator.rb
