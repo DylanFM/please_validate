@@ -1,0 +1,2 @@
+
+See http://github.com/DylanFM/please_validate for a brief how-to.
