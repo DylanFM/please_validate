@@ -12,12 +12,12 @@ A little markup validator.
 
 == SYNOPSIS:
 
-  === Valid file
+=== Valid file
   
     $ bin/pleasevalidate examples/valid.html
     Valid: examples/valid.html
 
-  === Invalid file
+=== Invalid file
 
     $ bin/pleasevalidate examples/invalid.html
     Invalid: examples/invalid.html
