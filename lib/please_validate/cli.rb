@@ -1,15 +1,15 @@
 require 'colored'
 
 module PleaseValidate
-  class Cli
+  class CLI
     class << self
-      def execute(args)
-        new(args)
+      def execute(stdout, arguments=[])
+        new(arguments)
       end
     end
     
-    def initialize(args)
-      @file = args[0]
+    def initialize(arguments)
+      @file = arguments[0]
       @result = validate
       display
     end

@@ -1,7 +1,8 @@
-#!/usr/bin/env ruby -wKU
+#!/usr/bin/env ruby
+#
+#  Created on 2009-3-9.
+#  Copyright (c) 2009. All rights reserved.
 
-$: << File.dirname(__FILE__) + '/../lib'
+require File.expand_path(File.dirname(__FILE__) + "/../lib/please_validate")
 
-require 'please_validate'
-
-PleaseValidate::Cli.execute(ARGV.dup)
+PleaseValidate::CLI.execute(STDOUT, ARGV)

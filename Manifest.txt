@@ -1,0 +1,14 @@
+History.txt
+LICENSE
+Manifest.txt
+README.rdoc
+RakeFile
+bin/pleasevalidate
+cucumber.yml
+features/steps/helper.rb
+features/steps/validate_steps.rb
+features/validate.feature
+features/validate_file.feature
+lib/please_validate.rb
+lib/please_validate/cli.rb
+lib/please_validate/validator.rb
