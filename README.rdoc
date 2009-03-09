@@ -46,7 +46,10 @@ A little markup validator.
 
 == INSTALL:
 
-    rake install_gem
+Run the following if you haven't already:
+    gem sources -a http://gems.github.com
+Install the gem:
+    sudo gem install DylanFM-pleasevalidate
 
 == LICENSE:
 
