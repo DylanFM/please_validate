@@ -9,9 +9,13 @@ module PleaseValidate
     end
     
     def initialize(arguments)
-      @file = arguments[0]
-      @result = validate
-      display
+      begin
+        @file = arguments[0]
+        @result = validate
+        display
+      rescue Exception => e
+        puts "Validation failed"
+      end
     end
     
     def validate

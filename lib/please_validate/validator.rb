@@ -4,14 +4,22 @@ module PleaseValidate
 
     class << self
       def file(file_path)
-        response = File.open(file_path, 'r') do |f|
-          Net::HTTP.start('validator.w3.org').post(
-            '/check',
-            "fragment=#{CGI.escape(f.read)}&output=xml",
-            {'Content-Type' => 'application/x-www-form-urlencoded'}
-          )
+        begin
+          raise "Please specify a file to validate" unless file_path
+          raise "The specified file doesn't exist" unless File.exist?(file_path)
+          response = File.open(file_path, 'r') do |f|
+            Net::HTTP.start('validator.w3.org').post(
+              '/check',
+              "fragment=#{CGI.escape(f.read)}&output=xml",
+              {'Content-Type' => 'application/x-www-form-urlencoded'}
+            )
+          end
+          parse_response response
+        rescue Exception => e
+          puts e
+          raise
         end
-        parse_response response
+        
       end
 
       def parse_response(response)
