@@ -30,7 +30,8 @@ module PleaseValidate
             stdout.puts opts; exit
           end
         end
-        new(arguments)
+        validation = new(arguments)
+        stdout.puts validation.msg
       end
     end
     
@@ -39,9 +40,9 @@ module PleaseValidate
       begin
         @file = arguments[0]
         @result = validate
-        display
+        @msg = display
       rescue Exception => e
-        puts "Validation failed"
+        @msg = "Validation failed"
       end
     end
     
@@ -52,13 +53,19 @@ module PleaseValidate
     
     # Displays the file validation's results
     def display
-      puts "#{@result[:status].to_s.capitalize}: #{@file}".send(@result[:status] == :valid ? :on_green : :on_red)
+      msg = "#{@result[:status].to_s.capitalize}: #{@file}".send(@result[:status] == :valid ? :on_green : :on_red)
       if @result[:status] == :invalid
-        puts "#{@result[:error_count]} error#{@result[:error_count] == 1 ? nil:'s'}:"
+        msg += "\n#{@result[:error_count]} error#{@result[:error_count] == 1 ? nil:'s'}:"
         @result[:errors].each do |error|
-          puts "Line #{error[:line]}, Column #{error[:col]}".red + ": #{error[:message]}"
+          msg += "\nLine #{error[:line]}, Column #{error[:col]}".red + ": #{error[:message]}"
         end
       end
+      msg
+    end
+    
+    #Displays the message for the command line result
+    def msg
+      @msg
     end
   end
 end
