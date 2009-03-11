@@ -4,11 +4,12 @@ module PleaseValidate
 
     class << self
       # Read requested file's contents and send to the w3c validator api then call the parse_response method to sort the response out.
-      def file(file_path)
+      def file(file)
         begin
-          raise "Please specify a file to validate" unless file_path
-          raise "The specified file doesn't exist" unless File.exist?(file_path)
-          response = File.open(file_path, 'r') do |f|
+          raise "please specify a file to validate" unless file
+          raise "the specified file doesn't exist" unless File.exist? file
+          raise "the specified file must have a content type of text/html" unless file_valid? file
+          response = File.open(file, 'r') do |f|
             Net::HTTP.start('validator.w3.org').post(
               '/check',
               "fragment=#{CGI.escape(f.read)}&output=xml",
@@ -17,8 +18,7 @@ module PleaseValidate
           end
           parse_response response
         rescue Exception => e
-          puts e
-          raise
+          "Validation failed: #{e}"
         end
         
       end
@@ -47,6 +47,12 @@ module PleaseValidate
           }
         end
         result
+      end
+      
+      # Takes a file path and checks to see if it's mime type is OK. Currently using the first mime type returned by the mime-types gem.
+      def file_valid?(file)
+        mime = MIME::Types.type_for(file).first
+        !mime.nil? && ACCEPTED_MIMES.include?(mime.content_type)
       end
     end
 

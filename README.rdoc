@@ -43,6 +43,7 @@ A little markup validator.
 
 * nokogiri
 * colored
+* mime/types (edge)
 
 == INSTALL:
 
