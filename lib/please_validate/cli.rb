@@ -42,7 +42,7 @@ module PleaseValidate
         @result = validate
         @msg = display
       rescue Exception => e
-        @msg = e
+        @msg = "Validation failed: #{e}"
       end
     end
     

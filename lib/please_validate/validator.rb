@@ -17,8 +17,6 @@ module PleaseValidate
             )
           end
           parse_response response
-        rescue Exception => e
-          "Validation failed: #{e}"
         end
         
       end

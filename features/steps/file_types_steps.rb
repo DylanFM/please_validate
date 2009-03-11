@@ -7,8 +7,7 @@ When /^the HTML file is validated$/ do
 end
 
 Then /^there should be no errors$/ do
-  @result.should be_instance_of(Hash)
-  @result.should_not =~ /^Validation failed:/
+  @result.should be_an_instance_of(Hash)
 end
 
 Given /^there is a non\-HTML file$/ do
@@ -17,10 +16,9 @@ Given /^there is a non\-HTML file$/ do
 end
 
 When /^the non\-HTML file is requested$/ do
-  When "the file is validated"
+  #Nothing to go here?
 end
 
 Then /^there should be an error$/ do
-  @result.should be_instance_of(String)
-  @result.should == "Validation failed: the specified file must have a content type of text/html"
+  lambda { PleaseValidate::Validator.file(@file) }.should raise_error
 end
