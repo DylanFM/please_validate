@@ -7,7 +7,7 @@ When /^the HTML file is validated$/ do
 end
 
 Then /^there should be no errors$/ do
-  @result.should be_instance_of Hash
+  @result.should be_instance_of(Hash)
   @result.should_not =~ /^Validation failed:/
 end
 
@@ -21,6 +21,6 @@ When /^the non\-HTML file is requested$/ do
 end
 
 Then /^there should be an error$/ do
-  @result.should be_instance_of String
+  @result.should be_instance_of(String)
   @result.should == "Validation failed: the specified file must have a content type of text/html"
 end

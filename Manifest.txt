@@ -1,12 +1,15 @@
 History.txt
 LICENSE
 Manifest.txt
+PostInstall.txt
 README.rdoc
 RakeFile
 bin/pleasevalidate
 cucumber.yml
 features/cli_validation.feature
+features/file_types.feature
 features/steps/cli_validation_steps.rb
+features/steps/file_types_steps.rb
 features/steps/helper.rb
 features/steps/validate_steps.rb
 features/validate.feature
