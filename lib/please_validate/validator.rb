@@ -22,7 +22,7 @@ module PleaseValidate
       
       # Takes an array of files and validates them all
       def files(files)
-        files.collect { |file| self.file(file) }
+        files.uniq.collect { |file| self.file(file) }
       end
 
       # Takes an XML response from the file method's call to the w3c and parses it into a nice little hash
