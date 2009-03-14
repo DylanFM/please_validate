@@ -7,8 +7,8 @@ module PleaseValidate
       def file(file)
         begin
           raise "please specify a file to validate" unless file
-          raise "the specified file doesn't exist" unless File.exist? file
-          raise "the specified file must have a content type of text/html" unless file_valid? file
+          raise "#{file} doesn't exist" unless File.exist? file
+          raise "#{file} must have a content type of text/html" unless file_valid? file
           response = File.open(file, 'r') do |f|
             Net::HTTP.start('validator.w3.org').post(
               '/check',
@@ -22,7 +22,13 @@ module PleaseValidate
       
       # Takes an array of files and validates them all
       def files(files)
-        files.uniq.collect { |file| self.file(file) }
+        files.uniq.collect do |file|
+          begin
+            self.file(file)
+          rescue Exception => e
+            "Validation failed: #{e}"
+          end
+        end
       end
 
       # Takes an XML response from the file method's call to the w3c and parses it into a nice little hash
