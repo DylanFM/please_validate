@@ -2,3 +2,10 @@
 
 * 1 major enhancement:
   * Initial release
+
+== 0.0.2 2009-14-09
+
+* 1 major enhancement:
+	* Multiple files validated
+* 1 minor enhancement:
+	* Mime type checked to only allow html files to be validated

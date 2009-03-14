@@ -11,8 +11,10 @@ features/file_types.feature
 features/steps/cli_validation_steps.rb
 features/steps/file_types_steps.rb
 features/steps/helper.rb
+features/steps/validate_multiple_files_steps.rb
 features/steps/validate_steps.rb
 features/validate.feature
+features/validate_multiple_files.feature
 lib/please_validate.rb
 lib/please_validate/cli.rb
 lib/please_validate/validator.rb
