@@ -16,17 +16,22 @@ module PleaseValidate
               {'Content-Type' => 'application/x-www-form-urlencoded'}
             )
           end
-          parse_response response
+          parse_response file, response
         end
-        
+      end
+      
+      # Takes an array of files and validates them all
+      def files(files)
+        files.collect { |file| self.file(file) }
       end
 
       # Takes an XML response from the file method's call to the w3c and parses it into a nice little hash
-      def parse_response(response)
+      def parse_response(filename, response)
         # Use Nokogiri to parse the xml
         response_data = Nokogiri::XML.parse(response.body)
         # Begin building the return hash
         result = { 
+          :file => filename,
           :status => response['x-w3c-validator-status'].downcase.to_sym,
           :error_count => response['x-w3c-validator-errors'].to_i,
           :errors => Array.new
