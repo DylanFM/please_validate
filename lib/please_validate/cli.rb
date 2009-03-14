@@ -38,7 +38,7 @@ module PleaseValidate
     # Takes the requested file, passes it to validate for validation and displays the result with the display method
     def initialize(arguments)
       begin
-        @file = arguments[0]
+        @files = arguments
         @result = validate
         @msg = display
       rescue Exception => e
@@ -48,19 +48,22 @@ module PleaseValidate
     
     # Calls the validator class's file method for the requested file
     def validate
-      PleaseValidate::Validator.file(@file)
+      PleaseValidate::Validator.files(@files)
     end
     
     # Displays the file validation's results
     def display
-      msg = "#{@result[:status].to_s.capitalize}: #{@file}".send(@result[:status] == :valid ? :on_green : :on_red)
-      if @result[:status] == :invalid
-        msg += "\n#{@result[:error_count]} error#{@result[:error_count] == 1 ? nil:'s'}:"
-        @result[:errors].each do |error|
-          msg += "\nLine #{error[:line]}, Column #{error[:col]}".red + ": #{error[:message]}"
+      @result.inject('') do |msg,result|
+        msg += "#{result[:status].to_s.capitalize}: #{result[:file]}".send(result[:status] == :valid ? :on_green : :on_red)
+        if result[:status] == :invalid
+          msg += "\n#{result[:error_count]} error#{result[:error_count] == 1 ? nil:'s'}:"
+          result[:errors].each do |error|
+            msg += "\nLine #{error[:line]}, Column #{error[:col]}".red + ": #{error[:message]}"
+          end
         end
+        msg += "\n"
+        msg
       end
-      msg
     end
     
     #Displays the message for the command line result
