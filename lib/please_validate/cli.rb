@@ -37,14 +37,14 @@ module PleaseValidate
     
     # Takes the requested file, passes it to validate for validation and displays the result with the display method
     def initialize(arguments)
-      validate arguments
+      @result = validate arguments
       @msg = display
     end
     
     # Calls the validator class's file method for the requested file
     def validate(items)
       request = PleaseValidate::Request.new(items)
-      @result = request.result
+      request.result
     end
     
     # Displays the file validation's results
