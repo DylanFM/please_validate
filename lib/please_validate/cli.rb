@@ -37,19 +37,19 @@ module PleaseValidate
     
     # Takes the requested file, passes it to validate for validation and displays the result with the display method
     def initialize(arguments)
-      @files = arguments
-      @results = validate
+      validate arguments
       @msg = display
     end
     
     # Calls the validator class's file method for the requested file
-    def validate
-      PleaseValidate::Validator.files(@files)
+    def validate(items)
+      request = PleaseValidate::Request.new(items)
+      @result = request.result
     end
     
     # Displays the file validation's results
     def display
-      @results.inject('') do |msg,result|
+      @result.inject('') do |msg,result|
         if result.is_a? Hash
           msg += "#{result[:status].to_s.capitalize}: #{result[:file]}".send(result[:status] == :valid ? :on_green : :on_red)
           if result[:status] == :invalid
