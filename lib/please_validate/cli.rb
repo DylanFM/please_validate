@@ -35,19 +35,19 @@ module PleaseValidate
       end
     end
     
-    # Takes the requested file, passes it to validate for validation and displays the result with the display method
+    # Takes the arguments, passes it to validate for validation and displays the result
     def initialize(arguments)
       @result = validate arguments
       @msg = display
     end
     
-    # Calls the validator class's file method for the requested file
+    # Creates a new request object and returns its result
     def validate(items)
       request = PleaseValidate::Request.new(items)
       request.result
     end
     
-    # Displays the file validation's results
+    # Displays the request's results
     def display
       @result.inject('') do |msg,result|
         if result.is_a? Hash
