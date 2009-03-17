@@ -1,7 +1,7 @@
-Feature: Validate a file
-  In order to product valid markup
+Feature: Validate an XHTML file
+  In order to produce valid markup
   As a web developer
-  I want to validate a file
+  I want to validate an XHTML file
   
   Scenario: Validate a file
     Given there is a valid html file examples/valid.html
