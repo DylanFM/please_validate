@@ -1,6 +1,7 @@
 = Please Validate
 
-http://github.com/DylanFM/please_validate/tree
+http://github.com/DylanFM/please_validate/
+http://rubyforge.org/projects/pleasevalidate/
 
 == DESCRIPTION:
 
@@ -41,7 +42,7 @@ A little markup validator.
 
 === A few files: valid, invalid and a non-HTML file
 
-    $pleasevalidate examples/valid.html RakeFile examples/invalid.html
+		$pleasevalidate examples/valid.html RakeFile examples/invalid.html
 		Valid: examples/valid.html
 
 		Validation failed: RakeFile must have a content type of text/html
@@ -73,10 +74,13 @@ A little markup validator.
 
 == INSTALL:
 
+		gem install pleasevalidate
+
+=== Or via Github:
 Run the following if you haven't already:
     gem sources -a http://gems.github.com
 Install the gem:
-    sudo gem install DylanFM-pleasevalidate
+    gem install DylanFM-pleasevalidate
 
 == LICENSE:
 
