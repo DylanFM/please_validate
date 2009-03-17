@@ -1,7 +1,7 @@
 = Please Validate
 
-http://github.com/DylanFM/please_validate/
-http://rubyforge.org/projects/pleasevalidate/
+* http://github.com/DylanFM/please_validate/
+* http://rubyforge.org/projects/pleasevalidate/
 
 == DESCRIPTION:
 
