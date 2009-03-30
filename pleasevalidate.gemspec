@@ -2,19 +2,19 @@
 
 Gem::Specification.new do |s|
   s.name = %q{pleasevalidate}
-  s.version = "0.0.2"
+  s.version = "0.0.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Dylan Fogarty-MacDonald"]
-  s.date = %q{2009-03-16}
+  s.date = %q{2009-03-31}
   s.default_executable = %q{pleasevalidate}
   s.description = %q{A little markup validator.}
   s.email = ["dylan.fm@gmail.com"]
   s.executables = ["pleasevalidate"]
   s.extra_rdoc_files = ["History.txt", "Manifest.txt", "PostInstall.txt", "README.rdoc"]
-  s.files = ["History.txt", "LICENSE", "Manifest.txt", "PostInstall.txt", "README.rdoc", "RakeFile", "bin/pleasevalidate", "cucumber.yml", "features/cli_validation.feature", "features/file_types.feature", "features/steps/cli_validation_steps.rb", "features/steps/file_types_steps.rb", "features/steps/helper.rb", "features/steps/validate_multiple_files_steps.rb", "features/steps/validate_steps.rb", "features/validate.feature", "features/validate_multiple_files.feature", "lib/please_validate.rb", "lib/please_validate/cli.rb", "lib/please_validate/validator.rb"]
+  s.files = ["History.txt", "LICENSE", "Manifest.txt", "PostInstall.txt", "README.rdoc", "RakeFile", "bin/pleasevalidate", "cucumber.yml", "features/cli_validation.feature", "features/file_types.feature", "features/request.feature", "features/steps/cli_validation_steps.rb", "features/steps/file_types_steps.rb", "features/steps/helper.rb", "features/steps/request_steps.rb", "features/steps/validate_multiple_files_steps.rb", "features/steps/validate_steps.rb", "features/validate.feature", "features/validate_multiple_files.feature", "lib/please_validate.rb", "lib/please_validate/cli.rb", "lib/please_validate/request.rb", "lib/please_validate/validator.rb"]
   s.has_rdoc = true
-  s.homepage = %q{http://github.com/DylanFM/please_validate/tree}
+  s.homepage = %q{http://github.com/DylanFM/please_validate/}
   s.post_install_message = %q{PostInstall.txt}
   s.rdoc_options = ["--main", "README.rdoc"]
   s.require_paths = ["lib"]
